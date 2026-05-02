@@ -2,10 +2,10 @@ import itertools
 import sys
 def calculate_distance(graph, path):
     distance = 0
-    # Menghitung jarak rute kota yang dikunjungi
+  
     for i in range(len(path) - 1):
         distance += graph[path[i]][path[i+1]]
-    # Menambahkan jarak dari kota terakhir kembali ke kota awal
+   
     distance += graph[path[-1]][path[0]]
     return distance
 def tsp_brute_force(graph, starting_node=0):
@@ -14,21 +14,19 @@ def tsp_brute_force(graph, starting_node=0):
     nodes.remove(starting_node)
     min_path = None
     min_distance = sys.maxsize
-    # Menghasilkan semua permutasi rute dari kota-kota yang tersisa
+ 
     permutations = itertools.permutations(nodes)
     for perm in permutations:
         current_path = [starting_node] + list(perm)
         current_distance = calculate_distance(graph, current_path)
-        # Memperbarui rute terpendek jika ditemukan jarak yang lebih kecil
+       
         if current_distance < min_distance:
             min_distance = current_distance
             min_path = current_path
-    # Menambahkan kota awal ke akhir rute untuk menyelesaikan sirkuit
+    
     min_path.append(starting_node)
     return min_path, min_distance
-# =================================================================
-# IDENTITAS MAHASISWA (Wajib tampil di output)
-# =================================================================
+
 print("="*45)
 print("Nama : Noufal Afif Nur Fadilah Ali")
 print("NIM  : 24533843")
